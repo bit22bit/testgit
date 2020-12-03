@@ -8,10 +8,10 @@
     android:orientation="vertical">
 
     <EditText
-        android:id="@+id/name"
+        android:id="@+id/headline"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/email"
+        android:layout_above="@+id/location"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="157dp"
@@ -23,10 +23,10 @@
         android:textAlignment="viewStart" />
 
     <EditText
-        android:id="@+id/email"
+        android:id="@+id/location"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/pass"
+        android:layout_above="@+id/salary"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="60dp"
         android:layout_marginRight="30dp"
@@ -35,13 +35,13 @@
         android:hint="Email"
         android:inputType="textPersonName"
         android:textAlignment="viewStart"
-        app:layout_constraintTop_toBottomOf="@+id/name" />
+        app:layout_constraintTop_toBottomOf="@+id/headline" />
 
     <EditText
-        android:id="@+id/pass"
+        android:id="@+id/salary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/join"
+        android:layout_above="@+id/language"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="20dp"
         android:layout_marginRight="20dp"
@@ -49,10 +49,38 @@
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
-        app:layout_constraintTop_toBottomOf="@+id/email" />
+        app:layout_constraintTop_toBottomOf="@+id/location" />
+
+    <EditText
+        android:id="@+id/language"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/exp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="90dp"
+        android:ems="10"
+        android:hint="Language"
+        android:inputType="textPassword"
+        app:layout_constraintTop_toBottomOf="@+id/salary" />
+
+    <EditText
+        android:id="@+id/exp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/submit"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="90dp"
+        android:ems="10"
+        android:hint="experience"
+        android:inputType="textPassword"
+        app:layout_constraintTop_toBottomOf="@+id/language" />
 
     <Button
-        android:id="@+id/join"
+        android:id="@+id/submit"
         android:layout_width="272dp"
         android:layout_height="wrap_content"
         android:layout_above="@+id/bottom_navigation"
@@ -62,8 +90,8 @@
         android:layout_marginTop="30dp"
         android:layout_marginEnd="70dp"
         android:layout_marginBottom="95dp"
-        android:text="JOIN US"
-        app:layout_constraintTop_toBottomOf="@+id/pass" />
+        android:text="SUBMIT"
+        app:layout_constraintTop_toBottomOf="@+id/exp" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"

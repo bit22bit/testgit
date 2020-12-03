@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "554928013489",
+    "project_id": "jobpost-4b347",
+    "storage_bucket": "jobpost-4b347.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:554928013489:android:fd2e321621c838b3f36290",
+        "android_client_info": {
+          "package_name": "com.example.jobbox"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "554928013489-ikkfpkoifm7i6i7fdh5865fmt0iht0cp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDOh1R95pA6egpDIiyzoEYQ6Bc2IymClFQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "554928013489-ikkfpkoifm7i6i7fdh5865fmt0iht0cp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
