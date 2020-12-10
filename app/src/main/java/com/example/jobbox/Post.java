@@ -26,17 +26,16 @@ import java.util.ArrayList;
 
 public class Post extends AppCompatActivity {
 
-    ListView listView;
-    ArrayList<Postlist> post;
+//    ListView listView;
+//    ArrayList<Postlist> post;
     TextView resultTv;
-    Button retrieve;
     FirebaseFirestore db;
 
 //    public ArrayList<Postlist> generateUsers() {
 //        ArrayList<Postlist> post = new ArrayList<>();
 //        post.add(new Postlist("","","","",""));
 //        return post;
-//    }
+//    }r
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,15 +43,38 @@ public class Post extends AppCompatActivity {
         setContentView(R.layout.activity_post);
 
         resultTv = findViewById(R.id.postView);
-        retrieve = findViewById(R.id.addbtn);
         db=FirebaseFirestore.getInstance();
 
-        retrieve.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getData();
-            }
-        });
+        db.collection("jobpost")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()){
+                            String resultt="";
+
+                            for(DocumentSnapshot document : task.getResult()){
+                                Postlist postlist = document.toObject(Postlist.class);
+                                resultt+=
+                                        "Headline: "+ postlist.getheadline()+
+                                                "\nLocation: "+ postlist.getLocation()+
+                                                "\nSalary: "+postlist.getSalary()+
+                                                "\nLanguage: "+ postlist.getLanguage()+
+                                                "\nExperience: "+postlist.getExperience()+"\n\n";
+
+                            }
+
+                            resultTv.setText(resultt);
+                        }
+                    }
+
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(getApplicationContext(), "Error..."+e.getMessage(),Toast.LENGTH_LONG).show();
+                    }
+                });
 
 //==============================================================================================================
 //        listView = findViewById(R.id.userListView);
@@ -80,38 +102,5 @@ public class Post extends AppCompatActivity {
             }
         });
 //================================================================================================================
-    }
-
-    public void getData(){
-        db.collection("jobpost")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()){
-                            String resultt="";
-
-                            for(DocumentSnapshot document : task.getResult()){
-                                Postlist postlist = document.toObject(Postlist.class);
-                                resultt+=
-                                        "Headline: "+ postlist.getheadline()+
-                                        "\nLocation: "+ postlist.getLocation()+
-                                        "\nSalary: "+postlist.getSalary()+
-                                        "\nLanguage: "+ postlist.getLanguage()+
-                                        "\nExperience: "+postlist.getExperience()+"\n\n";
-
-                            }
-
-                            resultTv.setText(resultt);
-                        }
-                    }
-
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(getApplicationContext(), "Error..."+e.getMessage(),Toast.LENGTH_LONG).show();
-                    }
-                });
     }
 }
