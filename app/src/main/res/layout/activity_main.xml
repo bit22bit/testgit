@@ -5,20 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
+    android:id="@+id/mainactivity"
     android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/headline"
+    <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/location"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginBottom="20dp"
-        android:ems="10"
-        android:hint="Headline"
-        android:inputType="textPersonName"
-        android:textAlignment="viewStart" />
+        android:gravity="center"
+        android:text="click"
+        android:id="@+id/btnn"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"

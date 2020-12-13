@@ -1,12 +1,11 @@
 package com.example.jobbox;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,10 +19,9 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.FirebaseFirestore;
 
-public class Login extends Fragment {
 
+public class House extends Fragment {
     private Button signup, login;
     private FirebaseAuth myAuth;
     private TextView inputemail, inputpassword;
@@ -31,18 +29,18 @@ public class Login extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.activity_login, container, false);
-
-        signup = (Button)  view.findViewById(R.id.signup);
-        login = (Button)  view.findViewById(R.id.button);
-        inputemail = (TextView)  view.findViewById(R.id.email);
-        inputpassword = (EditText)  view.findViewById(R.id.pass);
+        View view = inflater.inflate(R.layout.fragment_house, container, false);
+        signup = (Button) view.findViewById(R.id.signup);
+        login = view.findViewById(R.id.button);
+        inputemail = view.findViewById(R.id.email);
+        inputpassword = view.findViewById(R.id.pass);
         myAuth = FirebaseAuth.getInstance();
 
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), Signup.class));
+                Intent in = new Intent(getActivity(), Signup.class);
+                startActivity(in);
             }
         });
 
@@ -81,6 +79,8 @@ public class Login extends Fragment {
                         });
             }
         });
+
         return view;
+
     }
 }
