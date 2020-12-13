@@ -20,77 +20,6 @@
         android:inputType="textPersonName"
         android:textAlignment="viewStart" />
 
-    <EditText
-        android:id="@+id/location"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/salary"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginBottom="20dp"
-        android:ems="10"
-        android:hint="Location"
-        android:inputType="textPersonName"
-        android:textAlignment="viewStart"
-        app:layout_constraintTop_toBottomOf="@+id/headline" />
-
-    <EditText
-        android:id="@+id/salary"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/language"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginBottom="20dp"
-        android:ems="10"
-        android:hint="Salary"
-        android:inputType="textPassword"
-        app:layout_constraintTop_toBottomOf="@+id/location" />
-
-    <EditText
-        android:id="@+id/language"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/exp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="20dp"
-        android:ems="10"
-        android:hint="Language"
-        android:inputType="textPassword"
-        app:layout_constraintTop_toBottomOf="@+id/salary" />
-
-    <EditText
-        android:id="@+id/exp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/submit"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="20dp"
-        android:ems="10"
-        android:hint="experience"
-        android:inputType="textPassword"
-        app:layout_constraintTop_toBottomOf="@+id/language" />
-
-    <Button
-        android:id="@+id/submit"
-        android:layout_width="272dp"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/bottom_navigation"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="70dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="70dp"
-        android:layout_marginBottom="40dp"
-        android:text="SUBMIT"
-        app:layout_constraintTop_toBottomOf="@+id/exp" />
-
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
@@ -98,6 +27,13 @@
         android:layout_alignParentBottom="true"
         android:background="?android:attr/windowBackground"
         app:menu="@menu/bottom_nav" />
+
+    <com.google.android.material.appbar.CollapsingToolbarLayout
+        android:id="@+id/upper_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/windowBackground"
+        app:menu="@menu/upper_nav" />
 
 
 </RelativeLayout>
