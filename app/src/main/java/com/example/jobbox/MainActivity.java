@@ -24,9 +24,22 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         BottomNavigationView navbottom = findViewById(R.id.bottom_navigation);
-        navbottom.setSelectedItemId(R.id.nav_posts);
+        navbottom.setSelectedItemId(R.id.nav_Housing);
 
-
+        navbottom.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()){
+                    case R.id.nav_login:
+                        startActivity(new Intent(MainActivity.this, Login.class));
+                        return true;
+                    case R.id.nav_setting:
+                        Toast.makeText(this, "settings is selected", Toast.LENGTH_LONG).show();
+                        return true;
+                }
+                return false;
+            }
+        });
     }
 
     @Override
