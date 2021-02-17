@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/nav_Housing"
+        android:id="@+id/nav_Add"
         android:icon="@drawable/ic_home"
-        android:title="Housing" />
+        android:title="Add Post" />
 
     <item
-        android:id="@+id/nav_bs"
+        android:id="@+id/nav_Post"
         android:icon="@drawable/ic_posts"
-        android:title="Buy &amp; sell" />
-
-    <item
-        android:id="@+id/nav_Vehicles"
-        android:icon="@drawable/ic_save"
-        android:title="Vehicles" />
+        android:title="Posts" />
 </menu>

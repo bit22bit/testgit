@@ -74,26 +74,6 @@ public class Signup extends AppCompatActivity {
                         });
             }
         });
-
-//        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
-//
-//        bottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-//            @Override
-//            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-//                switch (menuItem.getItemId()){
-//                    case R.id.nav_home:startActivity(new Intent(getApplicationContext(), MainActivity.class));
-//                        overridePendingTransition(0,0);
-//                        return true;
-//                    case R.id.nav_posts:startActivity(new Intent(getApplicationContext(), Post.class));
-//                        overridePendingTransition(0,0);
-//                        return true;
-//                    case R.id.nav_save:startActivity(new Intent(getApplicationContext(), Save.class));
-//                        overridePendingTransition(0,0);
-//                        return true;
-//                }
-//                return false;
-//            }
-//        });
     }
 
     @Override

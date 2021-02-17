@@ -8,79 +8,84 @@ import androidx.fragment.app.FragmentManager;
 import android.app.TaskStackBuilder;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationMenu;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
-    Button btn;
+    private Button signup, login;
+    private FirebaseAuth myAuth;
+    private TextView inputemail, inputpassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        btn=(Button)findViewById(R.id.btnn);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Login frag = new Login();
-                FragmentManager fm = getSupportFragmentManager();
-                fm.beginTransaction().replace(R.id.mainactivity, frag).commit();
+        signup = (Button) findViewById(R.id.signup);
+        login = (Button) findViewById(R.id.login);
+        inputemail = (TextView) findViewById(R.id.email);
+        inputpassword = (EditText) findViewById(R.id.pass);
+        myAuth = FirebaseAuth.getInstance();
 
+        signup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, Signup.class));
             }
         });
 
-//        BottomNavigationView navbottom = findViewById(R.id.bottom_navigation);
-//        navbottom.setSelectedItemId(R.id.nav_Housing);
-//
-//        navbottom.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-//            @Override
-//            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-//                switch (menuItem.getItemId()){
-//                    case R.id.nav_Housing: startActivity(new Intent(getApplicationContext(), House.class));
-//                        overridePendingTransition(0,0);
-//                        return true;
-//                    case R.id.nav_bs: startActivity(new Intent(getApplicationContext(), BuySell.class));
-//                        overridePendingTransition(0,0);
-//                        return true;
-//                    case R.id.nav_Vehicles: startActivity(new Intent(getApplicationContext(), Vehicle.class));
-//                        overridePendingTransition(0,0);
-//                        return true;
-//                }
-//                return false;
-//            }
-//        });
-    }
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final String email = inputemail.getText().toString();
+                final String password = inputpassword.getText().toString();
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater =  getMenuInflater();
-        inflater.inflate(R.menu.upper_nav, menu);
-        return true;
-    }
+                if (TextUtils.isEmpty(email)) {
+                    Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.nav_login:
-                startActivity(new Intent(MainActivity.this, Login.class));
-                return true;
-            case R.id.nav_setting:
-                Toast.makeText(this, "settings is selected", Toast.LENGTH_LONG).show();
-                return true;
-            default:return super.onOptionsItemSelected(item);
-        }
-    }
+                if (TextUtils.isEmpty(password)) {
+                    Toast.makeText(getApplicationContext(), "Enter password!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
-//    public void login(View v){
-//        startActivity(new Intent(MainActivity.this, Post.class));
-//        finish();
-//    }
+                //authenticate user
+                myAuth.signInWithEmailAndPassword(email, password)
+                        .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (!task.isSuccessful()) {
+                                    if (password.length() < 6) {
+                                        inputpassword.setError(getString(R.string.minimum_password));
+                                    } else {
+                                        Toast.makeText(MainActivity.this, getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
+                                    }
+                                } else {
+                                    Toast.makeText(MainActivity.this, "Successfully Logged in.", Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(MainActivity.this, AddPost.class);
+                                    startActivity(intent);
+                                    finish();
+                                }
+                            }
+                        });
+            }
+        });
+
+
+    }
 }

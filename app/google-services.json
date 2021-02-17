@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "554928013489",
-    "project_id": "jobpost-4b347",
-    "storage_bucket": "jobpost-4b347.appspot.com"
+    "project_number": "727810523727",
+    "project_id": "jobposts-ad4eb",
+    "storage_bucket": "jobposts-ad4eb.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:554928013489:android:fd2e321621c838b3f36290",
+        "mobilesdk_app_id": "1:727810523727:android:e4e76c85da884b4fc0e03a",
         "android_client_info": {
           "package_name": "com.example.jobbox"
         }
       },
       "oauth_client": [
         {
-          "client_id": "554928013489-ikkfpkoifm7i6i7fdh5865fmt0iht0cp.apps.googleusercontent.com",
+          "client_id": "727810523727-3sh9rrfmeb4mfokprbd5vaggd0bhpvju.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDOh1R95pA6egpDIiyzoEYQ6Bc2IymClFQ"
+          "current_key": "AIzaSyBeJKN2J4KhxyYzxYAXtDehH7YjDohJQjQ"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "554928013489-ikkfpkoifm7i6i7fdh5865fmt0iht0cp.apps.googleusercontent.com",
+              "client_id": "727810523727-3sh9rrfmeb4mfokprbd5vaggd0bhpvju.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

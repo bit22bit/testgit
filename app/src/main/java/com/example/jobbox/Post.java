@@ -12,7 +12,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.jobbox.adapter.PostCustomAdapter;
 import com.example.jobbox.models.Postlist;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -26,16 +25,8 @@ import java.util.ArrayList;
 
 public class Post extends AppCompatActivity {
 
-//    ListView listView;
-//    ArrayList<Postlist> post;
     TextView resultTv;
     FirebaseFirestore db;
-
-//    public ArrayList<Postlist> generateUsers() {
-//        ArrayList<Postlist> post = new ArrayList<>();
-//        post.add(new Postlist("","","","",""));
-//        return post;
-//    }r
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,11 +47,11 @@ public class Post extends AppCompatActivity {
                             for(DocumentSnapshot document : task.getResult()){
                                 Postlist postlist = document.toObject(Postlist.class);
                                 resultt+=
-                                        "Headline: "+ postlist.getheadline()+
-                                                "\nLocation: "+ postlist.getLocation()+
-                                                "\nSalary: "+postlist.getSalary()+
-                                                "\nLanguage: "+ postlist.getLanguage()+
-                                                "\nExperience: "+postlist.getExperience()+"\n\n";
+                                        "headline: "+ postlist.getheadline()+
+                                        "\nLocation: "+ postlist.getLocation()+
+                                        "\nSalary: "+postlist.getSalary()+
+                                        "\nLanguage: "+ postlist.getLanguage()+
+                                        "\nExperience: "+postlist.getExperience()+"\n\n";
 
                             }
 
@@ -83,24 +74,21 @@ public class Post extends AppCompatActivity {
 //        listView.setAdapter(adapter);
 
 //==============================================================================================================
-//        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
-//        bottomNav.setSelectedItemId(R.id.nav_posts);
-//
-//        bottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-//            @Override
-//            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-//                switch (menuItem.getItemId()){
-//                    case R.id.nav_home:startActivity(new Intent(getApplicationContext(), MainActivity.class));
-//                        overridePendingTransition(0,0);
-//                        return true;
-//                    case R.id.nav_posts: return true;
-//                    case R.id.nav_save: startActivity(new Intent(getApplicationContext(), Save.class));
-//                        overridePendingTransition(0,0);
-//                        return true;
-//                }
-//                return false;
-//            }
-//        });
+        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
+        bottomNav.setSelectedItemId(R.id.nav_Post);
+
+        bottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()){
+                    case R.id.nav_Add:startActivity(new Intent(getApplicationContext(), AddPost.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.nav_Post: return true;
+                }
+                return false;
+            }
+        });
 //================================================================================================================
     }
 }
